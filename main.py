@@ -1,5 +1,5 @@
 import random
-import replit
+import os
 import time
 
 def choose_character(option):
@@ -248,7 +248,7 @@ COM is {opponent}''')
     damage = 0
     chance = 0
     while winner == "none":
-        replit.clear()
+        os.system("clear")
         if turn == "P1":
             if P1_HP > 0:
                 print(f"|{character.upper()} VS {opponent.upper()}|")
@@ -278,7 +278,7 @@ COM is {opponent}''')
                     elif option == 3:
                         while option2 != 1 and option2 != 2 and option2 != 3:
                             option2 = int(input("> "))
-                    replit.clear()
+                    os.system("clear")
                     if option == 1:
                         if character == "Noob":
                             if option2 == 1:
@@ -1522,7 +1522,7 @@ Waiting for opponent's turn...''')
                         elif opponent_option1 == 3:
                             while opponent_option2 != 1 and opponent_option2 != 2 and opponent_option2 != 3:
                                 opponent_option2 = int(input("> "))
-                        replit.clear()
+                        os.system("clear")
                         if opponent_option1 == 1:
                             if opponent == "Noob":
                                 if opponent_option2 == 1:
