@@ -246,7 +246,7 @@ def option_func(character, option, option2, energy_regen_count, attack_item_coun
                     print(f'''{character} tried to find his/her item, not knowing it ran out.''')
 
 
-def option_effects(option, option2, opponent, character, time, random, SP, opponent_blocking, opponent_dodging, player_hp, opponent_hp):
+def option_effects(option, option2, opponent, character, time, random, SP, opponent_blocking, opponent_dodging, player_hp, opponent_hp, player_energy_regen_count, player_hp_regen_count, player_attack_item_count):
     if option == 1:
         if option2 == 1:
             if SP >= 10:
@@ -544,10 +544,10 @@ HP has been restored to {player_hp}!''')
             print(f'''
 Waiting for opponent's turn...''')
         elif option2 == 2:
-            if P1_energy_regen_count > 0:
-                P1_energy_regen_count = P1_energy_regen_count - 1
-                if P1_energy_regen_count < 0:
-                    P1_energy_regen_count = 0
+            if player_energy_regen_count > 0:
+                player_energy_regen_count = player_energy_regen_count - 1
+                if player_energy_regen_count < 0:
+                    player_energy_regen_count = 0
                 restore2 = random.randint(10,50)
                 SP = SP + int(restore2)
                 if SP > 100:
@@ -557,10 +557,10 @@ SP has been restored to {SP}!''')
             print(f'''
 Waiting for opponent's turn...''')
         elif option2 == 3:
-            if P1_attack_item_count > 0:
-                P1_attack_item_count = P1_attack_item_count - 1
-                if P1_attack_item_count < 0:
-                    P1_attack_item_count = 0
+            if player_attack_item_count > 0:
+                player_attack_item_count = player_attack_item_count - 1
+                if player_attack_item_count < 0:
+                    player_attack_item_count = 0
                 if opponent_blocking == True:
                     print(f'''
 Surprisingly, {opponent} succesfully blocked {character}'s attack!''')
