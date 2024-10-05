@@ -130,7 +130,7 @@ COM is {opponent}''')
                     os.system("clear")
                     option_func(character, option, option2, P1_energy_regen_count, P1_attack_item_count, P1_hp_regen_count, P1_SP)
                     time.sleep(1)
-                    option_effects(option, option2, opponent, character, time, random, P1_SP, P2_blocking, P2_dodging, P1_HP, P2_HP)
+                    option_effects(option, option2, opponent, character, time, random, P1_SP, P2_blocking, P2_dodging, P1_HP, P2_HP, P1_energy_regen_count, P1_hp_regen_count, P1_attack_item_count)
                     time.sleep(4)
                     P2_blocking = False
                     P2_dodging = False
@@ -148,7 +148,7 @@ COM is {opponent}''')
                     opponent_option2 = random.randint(1,3)
                     option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
                     time.sleep(1)
-                    option_effects(opponent_option1, opponent_option2, character, opponent, time, random, P2_SP, P1_blocking, P1_dodging, P2_HP, P1_HP)
+                    option_effects(opponent_option1, opponent_option2, character, opponent, time, random, P2_SP, P1_blocking, P1_dodging, P2_HP, P1_HP, P2_energy_regen_count, P2_hp_regen_count, P2_attack_item_count)
                     time.sleep(4)
                     P1_blocking = False
                     P1_dodging = False
@@ -184,7 +184,7 @@ COM is {opponent}''')
                         os.system("clear")
                         option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
                         time.sleep(1)
-                        option_effects(opponent_option1, opponent_option2, character, opponent, time, random, P2_SP, P1_blocking, P1_dodging, P2_HP, P1_HP)
+                        option_effects(opponent_option1, opponent_option2, character, opponent, time, random, P2_SP, P1_blocking, P1_dodging, P2_HP, P1_HP, P2_energy_regen_count, P2_hp_regen_count, P2_attack_item_count)
                         time.sleep(4)
                         P1_blocking = False
                         P1_dodging = False
