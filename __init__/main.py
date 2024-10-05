@@ -128,7 +128,7 @@ COM is {opponent}''')
                         while option2 != 1 and option2 != 2 and option2 != 3:
                             option2 = int(input("> "))
                     os.system("clear")
-                    option_func(character, option1, option2, P1_energy_regen_count, P1_attack_item_count, P1_hp_regen_count)
+                    option_func(character, option, option2, P1_energy_regen_count, P1_attack_item_count, P1_hp_regen_count, P1_SP)
                     time.sleep(1)
                     if option == 1:
                         if option2 == 1:
@@ -495,7 +495,7 @@ Waiting for opponent's turn...''')
                 if mode == "single":
                     opponent_option1 = random.randint(1,3)
                     opponent_option2 = random.randint(1,3)
-                    option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count)
+                    option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
                     time.sleep(1)
                     if opponent_option1 == 1:
                         if opponent_option2 == 1:
@@ -884,7 +884,7 @@ Waiting for opponent's turn...''')
                             while opponent_option2 != 1 and opponent_option2 != 2 and opponent_option2 != 3:
                                 opponent_option2 = int(input("> "))
                         os.system("clear")
-                        option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count)
+                        option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
                         time.sleep(1)
                         if opponent_option1 == 1:
                             if opponent_option2 == 1:

@@ -92,7 +92,7 @@ def option_func(character, option, option2, energy_regen_count, attack_item_coun
                     print(f'''{character} tried to find his/her item, not knowing it ran out.''')
             elif option2 == 2:
                 if energy_regen_count > 0:
-                    print(f'''Noob uses x1 Energy Drink!''')
+                    print(f'''Noob uses x1 Burger!''')
                 else:
                     print(f'''{character} tried to find his/her item, not knowing it ran out.''')
             elif option2 == 3:
