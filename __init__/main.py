@@ -128,7 +128,7 @@ COM is {opponent}''')
                         while option2 != 1 and option2 != 2 and option2 != 3:
                             option2 = int(input("> "))
                     os.system("clear")
-                    option_func(character, option, option2, P1_energy_regen_count, P1_attack_item_count, P1_hp_regen_count, P1_SP)
+                    option_func(character, option1, option2, P1_energy_regen_count, P1_attack_item_count, P1_hp_regen_count)
                     time.sleep(1)
                     if option == 1:
                         if option2 == 1:
@@ -161,7 +161,7 @@ Surprisingly, {opponent} succesfully dodged {character}'s attack!''')
                                         damage = random.randint(10,30)
                                         print(f'''
 {opponent} has taken {damage} damage from {character}'s attack!''')
-                                        P2_HP -= damage
+                                        P2_HP = P2_HP - damage
                                         if P2_HP < 0:
                                             P2_HP = 0
                                     time.sleep(0.5)
@@ -216,8 +216,8 @@ Surprisingly, {opponent} succesfully dodged {character}'s attack!''')
                                 print(f'''
 {character} lost {hp_loss} HP after risking the move from being tired.''')
                                 P1_HP = P1_HP - hp_loss
-                                if P1_HP < 0:
-                                    P1_HP = 0
+                                if P2_HP < 0:
+                                    P2_HP = 0
                         elif option2 == 2:
                             if P1_SP >= 20:
                                 if P2_blocking == True:
@@ -303,8 +303,8 @@ Surprisingly, {opponent} succesfully dodged {character}'s attack!''')
                                 print(f'''
 {character} lost {hp_loss} HP after risking the move from being tired.''')
                                 P1_HP = P1_HP - hp_loss
-                                if P1_HP < 0:
-                                    P1_HP = 0
+                                if P2_HP < 0:
+                                    P2_HP = 0
                         elif option2 == 3:
                             if P1_SP >= 50:
                                 if P2_blocking == True:
@@ -388,8 +388,6 @@ Surprisingly, {opponent} succesfully dodged {character}'s attack!''')
                                 print(f'''
 {character} lost {hp_loss} HP after risking the move from being tired.''')
                                 P1_HP = P1_HP - hp_loss
-                                if P1_HP < 0:
-                                    P1_HP = 0
                     elif option == 2:
                         if option2 == 1:
                             if P1_SP >= 10:
@@ -497,9 +495,9 @@ Waiting for opponent's turn...''')
                 if mode == "single":
                     opponent_option1 = random.randint(1,3)
                     opponent_option2 = random.randint(1,3)
-                    option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
+                    option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count)
                     time.sleep(1)
-                    if opponent_option == 1:
+                    if opponent_option1 == 1:
                         if opponent_option2 == 1:
                             if P2_SP >= 10:
                                 if P1_blocking == True:
@@ -530,7 +528,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                         damage = random.randint(10,30)
                                         print(f'''
 {character} has taken {damage} damage from {opponent}'s attack!''')
-                                        P1_HP -= damage
+                                        P1_HP = P1_HP - damage
                                         if P1_HP < 0:
                                             P1_HP = 0
                                     time.sleep(0.5)
@@ -673,7 +671,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
 {opponent} lost {hp_loss} HP after risking the move from being tired.''')
                                 P2_HP = P2_HP - hp_loss
                                 if P2_HP < 0:
-                                    P2_HP = 0
+                                    P2_SP = 0
                         elif opponent_option2 == 3:
                             if P2_SP >= 50:
                                 if P1_blocking == True:
@@ -728,6 +726,8 @@ Surprisingly, {character} succesfully blocked {opponent}'s attack!''')
                                     print(f'''
 {character} has slightly taken {damage} damage from {opponent}'s attack!''')
                                     P1_HP = P1_HP - (damage + random.randint(70,100))
+                                    if P1_HP < 0:
+                                        P1_HP = 0
                                     P1_blocking = False
                                 elif P1_dodging == True:
                                     chance = random.randint(0,1)
@@ -759,7 +759,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                 P2_HP = P2_HP - hp_loss
                                 if P2_HP < 0:
                                     P2_HP = 0
-                    elif opponent_option == 2:
+                    elif opponent_option1 == 2:
                         if opponent_option2 == 1:
                             if P2_SP >= 10:
                                 P2_SP = P2_SP - 10
@@ -767,7 +767,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                     P2_SP = 0
                                 P2_blocking = True
                             print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                         elif opponent_option2 == 2:
                             if P2_SP >= 20:
                                 P2_SP = P2_SP - 20
@@ -775,7 +775,7 @@ Waiting for character's turn...''')
                                     P2_SP = 0
                                 P2_dodging = True
                             print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                         elif opponent_option2 == 3:
                             restore = random.randint(10,50)
                             P2_SP = P2_SP + int(restore)
@@ -783,7 +783,7 @@ Waiting for character's turn...''')
                                 P2_SP = 100
                             print(f'''
 SP has been restored to {P2_SP}!''')
-                    elif opponent_option == 3:
+                    elif opponent_option1 == 3:
                         if opponent_option2 == 1:
                             if P2_hp_regen_count > 0:
                                 P2_hp_regen_count = P2_hp_regen_count - 1
@@ -796,7 +796,7 @@ SP has been restored to {P2_SP}!''')
                                 print(f'''
 HP has been restored to {P2_HP}!''')
                             print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                         elif opponent_option2 == 2:
                             if P2_energy_regen_count > 0:
                                 P2_energy_regen_count = P2_energy_regen_count - 1
@@ -809,7 +809,7 @@ Waiting for character's turn...''')
                                 print(f'''
 SP has been restored to {P2_SP}!''')
                             print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                         elif opponent_option2 == 3:
                             if P2_attack_item_count > 0:
                                 P2_attack_item_count = P2_attack_item_count - 1
@@ -850,7 +850,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                     if P1_HP < 0:
                                         P1_HP = 0
                             print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                     time.sleep(4)
                     P1_blocking = False
                     P1_dodging = False
@@ -884,9 +884,9 @@ Waiting for character's turn...''')
                             while opponent_option2 != 1 and opponent_option2 != 2 and opponent_option2 != 3:
                                 opponent_option2 = int(input("> "))
                         os.system("clear")
-                        option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count, P2_SP)
+                        option_func(opponent, opponent_option1, opponent_option2, P2_energy_regen_count, P2_attack_item_count, P2_hp_regen_count)
                         time.sleep(1)
-                        if opponent_option == 1:
+                        if opponent_option1 == 1:
                             if opponent_option2 == 1:
                                 if P2_SP >= 10:
                                     if P1_blocking == True:
@@ -917,7 +917,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                             damage = random.randint(10,30)
                                             print(f'''
 {character} has taken {damage} damage from {opponent}'s attack!''')
-                                            P1_HP -= damage
+                                            P1_HP = P1_HP - damage
                                             if P1_HP < 0:
                                                 P1_HP = 0
                                         time.sleep(0.5)
@@ -1060,7 +1060,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
 {opponent} lost {hp_loss} HP after risking the move from being tired.''')
                                     P2_HP = P2_HP - hp_loss
                                     if P2_HP < 0:
-                                        P2_HP = 0
+                                        P2_SP = 0
                             elif opponent_option2 == 3:
                                 if P2_SP >= 50:
                                     if P1_blocking == True:
@@ -1115,6 +1115,8 @@ Surprisingly, {character} succesfully blocked {opponent}'s attack!''')
                                         print(f'''
 {character} has slightly taken {damage} damage from {opponent}'s attack!''')
                                         P1_HP = P1_HP - (damage + random.randint(70,100))
+                                        if P1_HP < 0:
+                                            P1_HP = 0
                                         P1_blocking = False
                                     elif P1_dodging == True:
                                         chance = random.randint(0,1)
@@ -1146,7 +1148,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                     P2_HP = P2_HP - hp_loss
                                     if P2_HP < 0:
                                         P2_HP = 0
-                        elif opponent_option == 2:
+                        elif opponent_option1 == 2:
                             if opponent_option2 == 1:
                                 if P2_SP >= 10:
                                     P2_SP = P2_SP - 10
@@ -1154,7 +1156,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                         P2_SP = 0
                                     P2_blocking = True
                                 print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                             elif opponent_option2 == 2:
                                 if P2_SP >= 20:
                                     P2_SP = P2_SP - 20
@@ -1162,7 +1164,7 @@ Waiting for character's turn...''')
                                         P2_SP = 0
                                     P2_dodging = True
                                 print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                             elif opponent_option2 == 3:
                                 restore = random.randint(10,50)
                                 P2_SP = P2_SP + int(restore)
@@ -1170,7 +1172,7 @@ Waiting for character's turn...''')
                                     P2_SP = 100
                                 print(f'''
 SP has been restored to {P2_SP}!''')
-                        elif opponent_option == 3:
+                        elif opponent_option1 == 3:
                             if opponent_option2 == 1:
                                 if P2_hp_regen_count > 0:
                                     P2_hp_regen_count = P2_hp_regen_count - 1
@@ -1183,7 +1185,7 @@ SP has been restored to {P2_SP}!''')
                                     print(f'''
 HP has been restored to {P2_HP}!''')
                                 print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                             elif opponent_option2 == 2:
                                 if P2_energy_regen_count > 0:
                                     P2_energy_regen_count = P2_energy_regen_count - 1
@@ -1196,7 +1198,7 @@ Waiting for character's turn...''')
                                     print(f'''
 SP has been restored to {P2_SP}!''')
                                 print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                             elif opponent_option2 == 3:
                                 if P2_attack_item_count > 0:
                                     P2_attack_item_count = P2_attack_item_count - 1
@@ -1237,7 +1239,7 @@ Surprisingly, {character} succesfully dodged {opponent}'s attack!''')
                                         if P1_HP < 0:
                                             P1_HP = 0
                                 print(f'''
-Waiting for character's turn...''')
+Waiting for opponent's turn...''')
                         time.sleep(4)
                         P1_blocking = False
                         P1_dodging = False
